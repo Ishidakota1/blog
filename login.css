@@ -1,0 +1,87 @@
+
+/*-----------------------------------------------
+              メイン
+------------------------------------------------*/
+section{
+    width:90%;
+    margin: 50px auto;
+}
+
+section h2{
+
+    width:30%;
+    font-size:16px;
+    color: #fff ;
+    padding:12px ;
+    margin: 0 auto;
+    background-color:rgb(70, 70, 70);
+    border-radius: 5px;
+}
+form{
+    width:30%;
+    margin: 0 auto;
+    background-color:rgb(238, 238, 238);
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+table{ 
+    margin:20px auto;
+}
+th{
+    font-size: 16px;
+    text-align:left;
+    padding:20px 0 10px;
+}
+td{
+    padding:10px;
+    font-size: 16px;
+    text-align:center;
+    box-sizing: border-box;
+}
+input{
+    height:30px;
+    width: 100%;
+}
+.login-pass{
+    position: relative;
+}
+
+.submit-button{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.active_btn{
+    width: 50%;
+    background-color: #717ec8 ;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #b2dae4 ;
+    font-weight:bold;
+}
+
+.login-link{
+    text-align:center;
+    padding-bottom: 30px;
+}
+ 
+.register-id{
+    text-align:center;
+}
+
+.register-id p{
+    margin:50px;
+}
+.user-new{
+    text-align: center;
+    margin-top: 50px;
+}
+.register-id-btn{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #f0b03a;
+    padding: 15px 80px;
+    border-radius: 5px;
+    color:#fff;
+}
