@@ -14,30 +14,30 @@
 <body>
     <main>
         <section>
-            <h2>ログイン</h2>
+            <h2>アカウント新規登録</h2>
             <br>
 			<div>
 				<form th:action="@{/login/process}" method="post">
-					<p>ログインIDとパスワードをご入力ください。</p>
+					<p>下記項目をご入力ください。</p>
 				    <table>
 				        <tr>
+							<th>ログインID</th>
 				            <td><input type="text" name="accountId" placeholder="ログインID" required></td>
 				        </tr>
 				        <tr>
-				            <td class="login-pass"><input type="password" name="password" placeholder="パスワード" required></td>
+							<th>パスワード</th>
+				            <td><input type="password" name="password" placeholder="パスワード" required></td>
+				        </tr>
+						<tr>
+							<th>メールアドレス</th>
+				            <td><input type="text" name="mailaddres" placeholder="メールアドレス" required></td>
 				        </tr>
 				    </table>
 				    <div class="submit-button">
-				        <button id="login" class="login_btn">ログイン</button>
+						<button id="back" class="back-btn" onclick="history.back();" >戻る</button>
+						<button id="register" class="register-btn">登録</button>
 				    </div>
-                    <div class="login-link">
-                        <a href="#" style="text-decoration:none;">ログインID・パスワードをお忘れの場合</a>
-                    </div>
 				</form>
-			</div>
-			<div class="register-id">
-				<p>アカウントをお持ちでない場合はこちら</p>
-				<a href="#" class="register-new-btn" >新規登録</a>
 			</div>
         </section>
     </main>

@@ -1,0 +1,104 @@
+/*========= 共通設定CSS ===============*/
+img {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+main {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+.pc{
+    display:block;
+    background-color: #b2dcce ;
+    padding:30px;
+}
+
+.pc-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.pc-list {
+    display: flex;
+    align-items: center;
+    gap: 0 4rem;
+}
+
+.pc-list a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #594A4E;
+
+}
+
+.pc-list a:hover {
+    color: #EC6015;
+}
+
+.login-name{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #594A4E;
+}
+/*----------------------------------------------------------------
+商品一覧画面
+--------------------------------------------------------------------*/
+article {
+    margin: 0 auto;
+}
+
+article h2 {
+    color: #594A4E;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 40px;
+    font-weight: bold;
+}
+
+/*----------商品登録ボタン--------------*/
+.register-article{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+/*----------------登録ボタン---------------------*/
+.register-article-btn {
+    color: #fff;
+    font-size: 20px;
+    background-color: #eb6100;
+    padding: 10px 25px;
+    border-radius: 20px;
+}
+
+
+/*----------商品一覧--------------*/
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.articles li {
+    width: 25%; 
+    margin: 0.5rem;
+    border: 1px solid #594A4E;
+}
+
+.articles li a img {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.articles li a p {
+    text-align: center;
+    color: #594A4E;
+    font-weight: bold;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+

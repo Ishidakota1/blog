@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="blog.css">
+	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog.css}"> -->
+</head>
+
+<body>
+	<header>
+		<nav class="pc">
+			<div class="pc-inner">
+				<ul class="pc-list">
+					<li class="login-name" th:text="${adminName}">ゲスト</li>
+				</ul>
+				<ul class="pc-list">
+					<li class="header-menu-item"><a th:href="@{/product/list}">一覧</a></li>
+					<li class="header-menu-item"><a th:href="@{/product/list}">新規投稿</a></li>
+					<li class="header-menu-item"><a th:href="@{/product/list}">プロフィール</a></li>
+					<li class="header-menu-item"><a th:href="@{/admin/logout}">ログアウト</a></li>
+				</ul>
+			</div>
+		</nav>
+    </header>
+	<main>
+		<article>
+			<h2>記事一覧</h2><br>	
+			<div class="register-article">
+				<a th:href="@{/product/register}" class="register-article-btn">新規投稿</a>
+			</div>
+			<ul class="articles">
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<li th:each="product:${productList}">
+					<a>
+						<img alt="">
+						<p >aa</p>
+					</a>
+				</li>
+				<!-- <li th:each="product:${productList}">
+					<a th:href="@{/product/edit/{productId}(productId=${product.productId})}">
+						<img th:src="@{/product-img/{imagePath}(imagePath=${product.productImage})}" alt="">
+						<p th:text="${product.productName}"></p>
+					</a>
+				</li> -->
+				
+			</ul>
+			
+		</article>
+
+	</main>
+</body>
+
+</html>

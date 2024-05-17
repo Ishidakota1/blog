@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="blog-register.css">
+	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/login.css}"> -->
+</head>
+
+<body>
+	<header>
+		<nav class="pc">
+			<div class="pc-inner">
+				<ul class="pc-list">
+					<li class="login-name" th:text="${adminName}">ゲスト</li>
+				</ul>
+				<ul class="pc-list">
+					<li class="header-menu-item"><a th:href="@{/product/list}">一覧</a></li>
+					<li class="header-menu-item"><a th:href="@{/product/list}">新規投稿</a></li>
+					<li class="header-menu-item"><a th:href="@{/product/list}">プロフィール</a></li>
+					<li class="header-menu-item"><a th:href="@{/admin/logout}">ログアウト</a></li>
+				</ul>
+			</div>
+		</nav>
+    </header>
+    <main>
+        <div class="main-inner">
+            <section class="register-section">
+                <h2>新規投稿</h2>
+                <form th:action="@{/product/register/process}" method="post" enctype="multipart/form-data">
+                    <div class="register-section-details">
+						<div class="register-section-details_flex">
+                            <div>日付</div>
+                            <input type="date" name="productName" value="" id="">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div>タイトル</div>
+                            <input type="text" name="productName" value="" id="adminName">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div>内容</div>
+                            <textarea name="productDescription"></textarea>
+                        </div>
+						<div class="register-section-details_flex">
+                            <div>画像</div>
+                            <input type="file" name="productImage">
+                        </div>
+                    </div>
+                    <div class="register-section-details_flex">
+						<button class="back-btn" onclick="history.back();" type="button">戻る</button>
+						<button class="register-btn">投稿</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
