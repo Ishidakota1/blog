@@ -56,7 +56,8 @@
 						<button class="register-btn">更新</button>
                     </div>
                 </form>
-                <form th:action="@{/product/register/process}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/product/register/process}" method="post">
+                    <input type="hidden" name="">
                     <div class="register-section-details_flex">
 						<button class="delete-btn">記事を削除</button>
                     </div>
