@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	<link rel="stylesheet" href="login.css">
-	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">
-	<link rel="stylesheet" th:href="@{/css/login.css}"> -->
+	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">-->
+	<link rel="stylesheet" th:href="@{/css/login.css}"> 
 </head>
 
 <body>
@@ -16,8 +15,9 @@
         <section>
             <h2>アカウント新規登録</h2>
             <br>
+			<h1 th:if="${result}"　th:text="${result}"></h1>
 			<div>
-				<form th:action="@{/login/process}" method="post">
+				<form th:action="@{/register/process}" method="post">
 					<p>下記項目をご入力ください。</p>
 				    <table>
 				        <tr>
@@ -26,16 +26,16 @@
 				        </tr>
 				        <tr>
 							<th>パスワード</th>
-				            <td><input type="password" name="password" placeholder="パスワード" required></td>
+				            <td><input type="password" name="accountPassword" placeholder="パスワード" required></td>
 				        </tr>
 						<tr>
 							<th>メールアドレス</th>
-				            <td><input type="text" name="mailaddres" placeholder="メールアドレス" required></td>
+				            <td><input type="text" name="accountMailadress" placeholder="メールアドレス" required></td>
 				        </tr>
 				    </table>
 				    <div class="submit-button">
-						<button id="back" class="back-btn" onclick="history.back();" >戻る</button>
-						<button id="register" class="register-btn">登録</button>
+						<button id="back" type="button" class="back-btn" onclick="history.back();" >戻る</button>
+						<button id="register" type="submit" class="register-btn">登録</button>
 				    </div>
 				</form>
 			</div>

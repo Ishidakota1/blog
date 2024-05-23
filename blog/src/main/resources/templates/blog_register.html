@@ -6,10 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="blog-register.css">
-	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">
-	<link rel="stylesheet" th:href="@{/css/login.css}"> -->
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog-register.css}">
 </head>
 
 <body>
@@ -17,18 +15,18 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<ul class="pc-list">
-					<li class="login-name" th:text="${adminName}">ゲスト</li>
+					<li class="login-name" th:text="${userName}"></li>
 				</ul>
 				<ul class="pc-list">
-					<li class="header-menu-item"><a th:href="@{/product/list}">一覧</a></li>
-					<li class="header-menu-item"><a th:href="@{/product/list}">新規投稿</a></li>
+					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
+					<li class="header-menu-item"><a th:href="@{/article/register}">新規投稿</a></li>
 					<li class="header-menu-item"><a th:href="@{/product/list}">プロフィール</a></li>
-					<li class="header-menu-item"><a th:href="@{/admin/logout}">ログアウト</a></li>
+					<li class="header-menu-item"><a th:href="@{/logout}">ログアウト</a></li>
 				</ul>
 			</div>
 		</nav>
     </header>
-    <main>
+	<main>
         <div class="main-inner">
             <section class="register-section">
                 <h2>新規投稿</h2>
@@ -36,19 +34,19 @@
                     <div class="register-section-details">
 						<div class="register-section-details_flex">
                             <div>日付</div>
-                            <input type="date" name="productName" value="" id="">
+                            <input type="date" name="date" value="" id="">
                         </div>
                         <div class="register-section-details_flex">
                             <div>タイトル</div>
-                            <input type="text" name="productName" value="" id="adminName">
+                            <input type="text" name="articleName" value="" id="adminName">
                         </div>
                         <div class="register-section-details_flex">
                             <div>内容</div>
-                            <textarea name="productDescription"></textarea>
+                            <textarea name="articleDetail"></textarea>
                         </div>
 						<div class="register-section-details_flex">
                             <div>画像</div>
-                            <input type="file" name="productImage">
+                            <input type="file" name="articleImage">
                         </div>
                     </div>
                     <div class="register-section-details_flex">

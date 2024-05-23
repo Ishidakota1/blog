@@ -45,6 +45,10 @@ form p{
     text-align: center;
     padding-top:20px;
 }
+h1{
+	color: red;
+	text-align: center;
+}
 td{
     padding:10px;
     font-size: 16px;

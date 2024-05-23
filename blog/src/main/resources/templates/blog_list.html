@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog.css}"> 
+</head>
+
+<body>
+	<header>
+		<nav class="pc">
+			<div class="pc-inner">
+				<ul class="pc-list">
+					<li class="login-name" th:text="${userName}"></li>
+				</ul>
+				<ul class="pc-list">
+					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
+					<li class="header-menu-item"><a th:href="@{/article/register}">新規投稿</a></li>
+					<li class="header-menu-item"><a th:href="@{/product/list}">プロフィール</a></li>
+					<li class="header-menu-item"><a th:href="@{/logout}">ログアウト</a></li>
+				</ul>
+			</div>
+		</nav>
+    </header>
+	<main>
+		<article>
+			<h2>記事一覧</h2><br>	
+			<div class="register-article">
+				<a th:href="@{/article/register}" class="register-article-btn">新規投稿</a>
+			</div>
+			<ul class="articles">
+				<li th:each="articles:${articleList}">
+					<a th:href="@{/article/edit/{articleId}(articleId=${articles.articleId})}">
+						<img th:src="@{/articles-img/{imagePath}(imagePath=${articles.imageName})}" alt="">
+						<p th:text="${articles.articleName}"></p>
+					</a>
+				</li>
+				
+			</ul>
+			
+		</article>
+
+	</main>
+</body>
+
+</html>
