@@ -15,7 +15,7 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<ul class="pc-list">
-					<li class="login-name" th:text="${userName}"></li>
+					<li class="login-name" th:text="${userName} + ' 様'"></li>
 				</ul>
 				<ul class="pc-list">
 					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
@@ -29,21 +29,21 @@
 	<main>
 		<div class="main-inner">
 			<section class="register-section" th:object="${article}">
-				<h2 th:text="${title}">（編集）</h2>
-				<form th:action="@{/product/edit/process}" method="post" enctype="multipart/form-data">
+				<h2 th:text="*{articleName} + ' （編集）'"></h2>
+				<form th:action="@{/article/edit/process}" method="post" enctype="multipart/form-data">
 					<div class="register-section-details">
-						<input type="hidden" name="articleId" th:value="{articleId}">
+						<input type="hidden" name="articleId" th:value="*{articleId}">
 						<div class="register-section-details_flex">
 							<div>日付</div>
-							<input type="date" name="productName" value="" id="">
+							<input type="date" name="articleDate" th:value="*{articleDate}" id="">
 						</div>
 						<div class="register-section-details_flex">
 							<div>タイトル</div>
-							<input type="text" name="productName" th:value="*{articleName}" id="adminName">
+							<input type="text" name="articleName" th:value="*{articleName}" id="adminName" required>
 						</div>
 						<div class="register-section-details_flex">
 							<div>内容</div>
-							<textarea name="articleDetail" th:value="*{articleDetail}"></textarea>
+							<textarea name="articleDetail">[[*{articleDetail}]]</textarea>
 						</div>
 						<div class="register-section-details_flex">
 							<div>画像</div>
@@ -56,7 +56,7 @@
 					</div>
 				</form>
 				<form th:action="@{/article/delete}" method="post">
-					<input type="hidden" name="articleId" th:value="{articleId}">
+					<input type="hidden" name="articleId" th:value="*{articleId}">
 					<div class="register-section-details_flex">
 						<button class="delete-btn">記事を削除</button>
 					</div>

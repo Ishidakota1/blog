@@ -1,5 +1,6 @@
 package blog.com.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,12 @@ public class ArticleService {
 	// 商品の登録チャック
 	// findByProductName == null なら保存処理を行いtureを返却
 	// 商品が存在していればfalseを返却
-	public boolean createArticle(String articleName, String articleDetail, String imageName,
-			String accountId) {
+	public boolean createArticle(String articleName, String articleDetail, String imageName, String accountId,
+			String articleDate) {
 		if (articleDao.findByArticleName(articleName) == null) {
-			articleDao.save(new Article(articleName, articleDetail, imageName, 0, accountId));
+			Timestamp registerDate = new Timestamp(System.currentTimeMillis());
+			articleDao
+					.save(new Article(articleName, articleDetail, imageName, registerDate, 0, accountId, articleDate));
 			return true;
 		} else {
 			return false;
@@ -35,31 +38,37 @@ public class ArticleService {
 
 	// 商品編集画面表示
 	// productId == null ならnullを返却
-	public Article articleEditCheck(Long articleId) {
+	public Article selectOneArticle(Long articleId) {
 		if (articleId == null) {
 			return null;
 		} else {
 			// null出ない場合はfindByProductIdを呼び出して商品情報を返却
-			return articleDao.findByArticleId(articleId);
+			Article article = articleDao.findByArticleId(articleId);
+			int countUpOne = article.getDisplayCount();
+			countUpOne++;
+			article.setDisplayCount(countUpOne);
+			articleDao.save(article);
+			return article;
 		}
 	}
 
 	// 商品更新処理
 	// productId == null ならfalseを返却
 	public boolean articleUpdate(Long articleId, String articleName, String articleDetail, String imageName,
-			String accountId) {
+			String accountId, String articleDate) {
 		if (articleId == null) {
 			return false;
 		} else {
 			// productIdが存在するならfindByProductIdを呼び出して更新前データを変数に格納
 			Article article = articleDao.findByArticleId(articleId);
-
+			Timestamp updateDate = new Timestamp(System.currentTimeMillis());
 			// 更新前データを格納している変数に対してセッターで値を更新後、DBのレコードを更新
 			article.setArticleName(articleName);
 			article.setArticleDetail(articleDetail);
 			article.setImageName(imageName);
 			article.setAccountId(accountId);
-//			article.setUpdateDate();
+			article.setArticleDate(articleDate);
+			article.setUpdateDate(updateDate);
 			articleDao.save(article);
 
 			// コントローラーにはtrueを返却

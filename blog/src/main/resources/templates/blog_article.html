@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" th:href="@{/css/reset.css}">
-	<link rel="stylesheet" th:href="@{/css/login.css}"> 
+	<link rel="stylesheet" th:href="@{/css/blog-article.css}">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<ul class="pc-list">
-					<li class="login-name" th:text="${userName}"></li>
+					<li class="login-name" th:text="${userName} + ' 様'"></li>
 				</ul>
 				<ul class="pc-list">
 					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
@@ -25,50 +25,47 @@
 				</ul>
 			</div>
 		</nav>
-    </header>
+	</header>
 	<main>
 		<div class="main-inner">
-			<article>
-				<h2 th:text="${title}">１２３４５６７８９０１２３４５６７８９０</h2>
-				<h3 th:text="${date}">2037-06-06-Sat</h3>
+			<article th:object="${article}">
+				<h2 th:text="*{articleName}"></h2>
+				<h3 th:text="*{articleDate}"></h3>
+				<div class="display-count">
+					<h3 th:text="'閲覧数： ' + *{displayCount}"></h3>
+				</div>
 				<div class="conteiner">
-					<div class="main-text">相変わらず時間の流れの早さと戦う日々が続いております。もう４月が終わる……！
-今のうちに言っておいた方がまだ４月か！と思えそうなので言っておきます(゜_゜)
-最近はPCの画面を見すぎているせいなのか目の奥が痛く、それに伴って頭も痛くなるという事態が少し多くなっています。
-体調がおかしいと、コロナか……！？と不安になってしまう……
-でも、寝て起きれば治ってるんですけどね。長時間作業になるとまた違和感が出始める感じで…
-とりあえず、キツくなったら無理せずPCから離れるようにしないといけないなと思っています。
-今までは、気晴らしに映画とか、ショッピングモールをぶらついたりとか、そういうことで離れる時間を無意識に作っていたと思います。
-まさかそんな当たり前に出来ると思っていたことが出来なくなる日が来るとは……</div>
+					<div class="main-text" th:text="*{articleDetail}"></div>
 					<div class="show-comment">
-						<h2>この記事へのコメント</h2>
-							<ul>
-								<li th:each="product:${productList}" class="comment-and-user">
-									<p class="comment-text">進捗の報告ありがとうございます完成を楽しみにお待ちしています</p>
-									<p class="comment-user">Posted by nikofu at 2023年12月07日 16:43</p>
-								</li>
-								<li th:each="product:${productList}" class="comment-and-user">
-									<p class="comment-text">進捗の報告ありがとうございます完成を楽しみにお待ちしています</p>
-									<p class="comment-user">Posted by nikofu at 2023年12月07日 16:43</p>
-								</li>
-							</ul>
+						<h2 class="subject">この記事へのコメント</h2>
+						<ul>
+							<li th:each="comments:${comment}" class="comment-and-user">
+								<p class="comment-text" th:text="${comments.commentDetail}">
+								</p>
+								<p class="comment-user"
+									th:text="'Posted by ' +  ${comments.accountId} + ' at ' + ${comments.registerDate} ">
+								</p>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<form th:action="@{/product/register/process}" method="post" enctype="multipart/form-data">
-				<div class="comment-area">
-				    <textarea class="comment-textarea" placeholder="コメントを入力" ></textarea>
-				</div>
-				<div class="comment-area">
-					<button class="back-btn" onclick="history.back();" type="button">戻る</button>
-					<button class="register-btn">書込</button>
-				</div>
-       		  </form>
-				 <form th:if="" th:action="@{/product/register/process}" method="post">
+				<form th:action="@{/article/commesnt/process}" method="post">
+					<div class="comment-area">
+						<textarea class="comment-textarea" name="commentDetail" required></textarea>
+						<input type="hidden" name="articleId" th:value="*{articleId}">
+					</div>
+					<div class="comment-area">
+						<button class="back-btn" onclick="history.back();" type="button">戻る</button>
+						<button class="register-btn">コメントする</button>
+					</div>
+				</form>
+				<form th:if="${article.accountId == accountId }"
+					th:action="@{/article/edit/{articleId}(articleId=*{articleId})}" method="get">
 					<input type="hidden" name="">
-                    <div class="comment-area">
-						<button class="delete-btn">記事を削除</button>
-                    </div>
-                </form>
+					<div class="comment-area">
+						<button class="delete-btn">記事を編集する</button>
+					</div>
+				</form>
 			</article>
 		</div>
 	</main>

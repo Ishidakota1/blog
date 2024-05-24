@@ -10,16 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import blog.com.models.entity.Account;
+import blog.com.models.entity.Article;
 import blog.com.services.ArticleService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class ArticleRegisterController {
+public class ArticleEditController {
 
 	// ログイン情報保持のためsessionを宣言
 	@Autowired
@@ -28,9 +30,9 @@ public class ArticleRegisterController {
 	@Autowired
 	private ArticleService articleService;
 
-	// 記事登録画面表示
-	@GetMapping("/article/register")
-	public String getArticleRegisterPage(Model model) {
+	// 記事編集画面表示
+	@GetMapping("/article/edit/{articleId}")
+	public String getArticleEditPage(@PathVariable Long articleId, Model model) {
 
 		// セッションからログイン情報を取得
 		Account account = (Account) session.getAttribute("loginUserInfo");
@@ -40,16 +42,28 @@ public class ArticleRegisterController {
 			model.addAttribute("result", "再度ログインをお願いします。");
 			return "redirect:/login";
 		} else {
-			model.addAttribute("userName", account.getUserName());
-			return "blog_register.html";
+			// 編集画面に表示させる情報を取得
+			Article article = articleService.selectOneArticle(articleId);
+			
+			// article == null ならログイン画面にリダイレクト
+			if (article == null) {
+				return "redirect:/article/list";
+			} else {
+				model.addAttribute("userName", account.getUserName());
+				// articleにデータが存在していれば編集する内容をへ編集画面に渡して表示
+				model.addAttribute("accountId", account.getAccountId());
+				model.addAttribute("article", article);
+
+				return "blog_edit.html";
+			}
 		}
 	}
 
-	// 記事登録処理
-	@PostMapping("/article/register/process")
-	public String productRegisterProcess(@RequestParam String articleName, @RequestParam String articleDetail,
-			@RequestParam MultipartFile articleImage, @RequestParam String articleDate,
-			Model model) {
+	// 記事更新処理
+	@PostMapping("/article/edit/process")
+	public String articleUpdate(@RequestParam Long articleId, @RequestParam String articleName,
+			@RequestParam String articleDetail, @RequestParam MultipartFile articleImage,
+			@RequestParam String articleDate, Model model) {
 
 		// セッションからログイン情報を取得
 		Account account = (Account) session.getAttribute("loginUserInfo");
@@ -74,15 +88,13 @@ public class ArticleRegisterController {
 					e.printStackTrace();
 				}
 			}
-			// 記事登録処理
-			// 登録完了なら商品一覧画面にリダイレクト
-			// 登録失敗なら商品登録画面にとどまる
-			if (articleService.createArticle(articleName, articleDetail, fileName, account.getAccountId(),
-					articleDate)) {
+			// 記事更新処理
+			// 更新完了なら商品一覧画面にリダイレクト
+			// 更新失敗なら商品更新画面にとどまる
+			if (articleService.articleUpdate(articleId, articleName, articleDetail, fileName, account.getAccountId(),articleDate)) {
 				return "redirect:/article/list";
 			} else {
-				model.addAttribute("userName", account.getUserName());
-				return "blog_register.html";
+				return "redirect:/article/edit" + articleId;
 			}
 		}
 	}

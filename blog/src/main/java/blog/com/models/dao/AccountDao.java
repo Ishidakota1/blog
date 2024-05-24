@@ -11,17 +11,12 @@ public interface AccountDao extends JpaRepository<Account, String> {
 	// 保存処理と更新処理
 	Account save(Account account);
 
-	// SELECT * FROM admit WHERE admin_email = ?
-	// 管理者の登録処理をするとき、同じメールアドレスが存在するならば登録しない
-	// 1行のレコードを取得
+	// アカウント登録処理時、IDの重複チェック
 	Account findByAccountId(String accountId);
 	
-	// SELECT * FROM admit WHERE admin_email = ?
-	// 管理者の登録処理をするとき、同じメールアドレスが存在するならば登録しない
-	// 1行のレコードを取得
+	// アカウント登録処理時、メールアドレスの重複チェック
 	Account findByAccountMailadress(String accountMailadress);
 
-	// SELECT * FROM admin WHERE admin_email = ? and password
-	// ログイン処理に使用。入力したメールアドレスがとパスワードが一致するデータを取得
+	// ログイン処理に使用。入力したログインIDとパスワードが一致するデータを取得
 	Account findByAccountIdAndAccountPassword(String accountId, String accountPassword);
 }

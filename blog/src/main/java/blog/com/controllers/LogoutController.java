@@ -2,6 +2,7 @@ package blog.com.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.servlet.http.HttpSession;
@@ -14,11 +15,12 @@ public class LogoutController {
 	private HttpSession session;
 
 	// ログアウト処理
-	@GetMapping("/admin/logout")
-	public String adminLogout() {
+	@GetMapping("/logout")
+	public String adminLogout(Model model) {
 		
 		// セッションの無効化
 		session.invalidate();
-		return "redirect:/admin/login";
+		model.addAttribute("result", "ログアウトしました。");
+		return "redirect:/login";
 	}
 }

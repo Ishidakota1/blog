@@ -65,7 +65,9 @@ article h2 {
     color: #594A4E;
     font-weight: bold;
 }
-
+.display-count{
+	text-align: right;
+}
 .conteiner {
     height: auto;
     margin: 15px auto;
@@ -85,8 +87,12 @@ article h2 {
     width: 90%;
     padding-top: 20px;
     border-top: 1px solid #bdbdbd;
-
 }
+
+.subject{
+    padding: 10px 0;
+}
+
 .comment-and-user{
     padding: 15px 0;
 }

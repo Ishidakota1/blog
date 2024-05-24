@@ -1,5 +1,7 @@
 package blog.com.services;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,8 @@ public class AccountService {
 			return 200;
 
 		} else {
-			accountDao.save(new Account(accountId, accountPassword, accountMailadress,"ユーザー"));
+			Timestamp registerDate = new Timestamp(System.currentTimeMillis());
+			accountDao.save(new Account(accountId, accountPassword, accountMailadress, registerDate, "ユーザー"));
 			return 0;
 		}
 	}

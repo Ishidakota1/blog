@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,30 +19,26 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Account {
+public class Comment {
 
-	// account_id
+	// comment_id
 	@Id
-	@NonNull
-	private String accountId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long commentId;
 
-	// account_password
+	// comment_detail
 	@NonNull
-	private String accountPassword;
-
-	// account_mailadress
-	@NonNull
-	private String accountMailadress;
+	private String commentDetail;
 
 	// register_date
 	@NonNull
 	private Date registerDate;
-	
-	// user_name
-	@NonNull
-	private String userName;
-	
-	// user_detail
-	private String userDetail;
 
+	// article_id
+	@NonNull
+	private Long articleId;
+	
+	// account_id
+	@NonNull
+	private String accountId;
 }

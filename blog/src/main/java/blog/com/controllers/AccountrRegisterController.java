@@ -17,18 +17,17 @@ public class AccountrRegisterController {
 
 	// 登録画面表示
 	@GetMapping("/register")
-	public String getAdminRegisterPage() {
+	public String getAccountRegisterPage() {
 		return "user_register.html";
 	}
 
 	// 登録処理
 	@PostMapping("/register/process")
-	public String adminRegisterProcess(@RequestParam String accountId, @RequestParam String accountPassword,
+	public String accountRegisterProcess(@RequestParam String accountId, @RequestParam String accountPassword,
 			@RequestParam String accountMailadress, Model model) {
 
 		int result = accountService.createAccount(accountId, accountPassword, accountMailadress);
-		// createAdminがtrueであればadminLogin.htmlに遷移
-		// falseならadmin_registerを表示
+		// 戻り値のステータスによって動作変化
 		switch (result) {
 		case 0:
 			model.addAttribute("result", "アカウント登録が完了しました。");

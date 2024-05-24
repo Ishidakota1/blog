@@ -15,7 +15,7 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<ul class="pc-list">
-					<li class="login-name" th:text="${userName}"></li>
+					<li class="login-name" th:text="${userName} + ' 様'"></li>
 				</ul>
 				<ul class="pc-list">
 					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
@@ -30,15 +30,15 @@
         <div class="main-inner">
             <section class="register-section">
                 <h2>新規投稿</h2>
-                <form th:action="@{/product/register/process}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/article/register/process}" method="post" enctype="multipart/form-data">
                     <div class="register-section-details">
 						<div class="register-section-details_flex">
                             <div>日付</div>
-                            <input type="date" name="date" value="" id="">
+                            <input type="date" name="articleDate" id="" required>
                         </div>
                         <div class="register-section-details_flex">
                             <div>タイトル</div>
-                            <input type="text" name="articleName" value="" id="adminName">
+                            <input type="text" name="articleName" id="adminName" required>
                         </div>
                         <div class="register-section-details_flex">
                             <div>内容</div>

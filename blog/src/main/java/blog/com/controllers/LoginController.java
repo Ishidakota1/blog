@@ -31,11 +31,11 @@ public class LoginController {
 	@PostMapping("/login/process")
 	public String loginProcess(@RequestParam String accountId, @RequestParam String accountPassword, Model model) {
 
-		// logincheckメソッドを呼び出しadmin情報を変数に格納
+		// account情報を変数に格納
 		Account account = accountService.loginCheck(accountId, accountPassword);
 
-		// admin == null ならログイン画面にとどまる。
-		// adminにデータが存在していればsessionにログイン情報を保存し商品一覧画面にリダイレクト /product/list
+		// account == null ならログイン画面にとどまる。
+		// accountにデータが存在していればsessionにログイン情報を保存し商品一覧画面にリダイレクト
 		if (account == null) {
 			model.addAttribute("result", "ログインに失敗しました。");
 			return "user_login.html";

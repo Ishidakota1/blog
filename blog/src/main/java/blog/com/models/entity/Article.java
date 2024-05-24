@@ -21,37 +21,40 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Article {
 
-	// account_id
+	// article_id
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long articleId;
 
-	// account_password
+	// article_name
 	@NonNull
 	private String articleName;
 
-	// account_mailadress
+	// article_detail
 	@NonNull
 	private String articleDetail;
 
-	// register_date
+	// image_name
 	@NonNull
 	private String imageName;
 	
-	// user_name
-	@CreatedDate
+	// register_date
+	@NonNull
 	private Date registerDate;
 	
-	// user_detail
-	@CreatedDate
+	// update_date
 	private Date updateDate;
 
-	// user_detail
+	// display_count
 	@NonNull
 	private Integer displayCount;
 
-	// user_detail
+	// account_id
 	@NonNull
 	private String accountId;
+	
+	// article_date
+	@NonNull
+	private String articleDate;
 
 }
