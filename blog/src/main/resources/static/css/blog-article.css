@@ -1,174 +1,181 @@
-/*========= 共通設定CSS ===============*/
 img {
-    width: 100%;
-    height: auto;
-    vertical-align: top;
+	object-fit: contain;
+	width: 90%;
+	height: 200px;
+	
 }
 
 main {
-    margin-top: 6rem;
-    margin-bottom: 2rem;
+	margin-top: 6rem;
+	margin-bottom: 2rem;
 }
 
-.pc{
-    display:block;
-    background-color: #b2dcce ;
-    padding:30px;
+.pc {
+	display: block;
+	background-color: #b2dcce;
+	padding: 30px;
 }
 
 .pc-inner {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	margin: 0 auto;
 
 }
 
 .pc-list {
-    display: flex;
-    align-items: center;
-    gap: 0 4rem;
+	display: flex;
+	align-items: center;
+	gap: 0 4rem;
 }
 
 .pc-list a {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #594A4E;
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #594A4E;
 
 }
 
 .pc-list a:hover {
-    color: #EC6015;
+	color: #EC6015;
 }
 
-.login-name{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #594A4E;
+.login-name {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #594A4E;
 }
-/*-------------------------------------------------------
-                        登録画面
----------------------------------------------------------*/
-.main-inner{
-    width:70%;
-    margin: 0 auto;
+
+.main-inner {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.img-area {
+	height: 100px;
 }
 
 article {
-    width: 60%;
-    margin: 0 auto;
+	width: 60%;
+	margin: 0 auto;
 }
 
 article h2 {
-    font-family: Kiwi Maru;
-    font-size: 20px;
-    color: #594A4E;
-    font-weight: bold;
+	font-family: Kiwi Maru;
+	font-size: 20px;
+	color: #594A4E;
+	font-weight: bold;
 }
-.display-count{
+
+.display-count {
 	text-align: right;
 }
+
 .conteiner {
-    height: auto;
-    margin: 15px auto;
-    background-color: #e6e6e6 ;
+	height: auto;
+	margin: 15px auto;
+	background-color: #e6e6e6;
 }
 
-.main-text{
-    font-size: 20px;
-    padding: 15px 0 50px;
-    padding: 15px 30px 50px;
-    line-height: 30px;
-    white-space: pre-wrap;
+.main-text {
+	font-size: 20px;
+	padding: 15px 0 50px;
+	padding: 15px 30px 50px;
+	line-height: 30px;
+	white-space: pre-wrap;
 }
 
-.show-comment{
-    margin: 0 auto;
-    width: 90%;
-    padding-top: 20px;
-    border-top: 1px solid #bdbdbd;
+.show-comment {
+	margin: 0 auto;
+	width: 90%;
+	padding-top: 20px;
+	border-top: 1px solid #bdbdbd;
 }
 
-.subject{
-    padding: 10px 0;
+.subject {
+	padding: 10px 0;
 }
 
-.comment-and-user{
-    padding: 15px 0;
+.comment-and-user {
+	padding: 15px 0;
 }
-.comment-text{
-    margin: 15px auto;
-    text-align: center;
+
+.comment-text {
+	margin: 15px auto;
+	text-align: center;
 }
-.comment-user{
-    text-align: right;
+
+.comment-user {
+	text-align: right;
 }
 
 textarea {
-    resize: vertical;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 0 0 1px #ccc inset;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    font-size: 1rem;
-    color: #594A4E;
-    font-family: Kiwi Maru;
-    width: 350px;
-    height: 200px;
+	resize: vertical;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	border: none;
+	box-shadow: 0 0 0 1px #ccc inset;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-size: 1rem;
+	color: #594A4E;
+	font-family: Kiwi Maru;
+	width: 350px;
+	height: 200px;
 }
 
 textarea:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #71c7c8 inset;
+	outline: 0;
+	box-shadow: 0 0 0 2px #71c7c8 inset;
 }
+
 .comment-area {
-    display: flex;
-    justify-content: center;
-    gap: 0 1rem;
-    align-items: center;
-    margin: 2rem 0;
+	display: flex;
+	justify-content: center;
+	gap: 0 1rem;
+	align-items: center;
+	margin: 2rem 0;
 }
 
 .register-section-details_flex div:first-child {
-    color: #594A4E;
-    font-family: Kiwi Maru;
-    width: 6rem;
-    line-height: 1.5rem;
-    font-size: 1rem;
+	color: #594A4E;
+	font-family: Kiwi Maru;
+	width: 6rem;
+	line-height: 1.5rem;
+	font-size: 1rem;
 }
 
-.register-btn{
-    font-size: 20px;
-    background-color: #717ec8 ;
-    color: #fff;
-    font-weight: bold;
-    border: gray;
-    padding: 10px 20px;
-    margin:0 20px;
-    border-radius: 5px;
+.register-btn {
+	font-size: 20px;
+	background-color: #717ec8;
+	color: #fff;
+	font-weight: bold;
+	border: gray;
+	padding: 10px 20px;
+	margin: 0 20px;
+	border-radius: 5px;
 }
 
-.back-btn{
-    font-size: 20px;
-    background-color:#fff;
-    color: gray;
-    font-weight: bold;
-    border: 1px solid;
-    padding: 10px 20px;
-    margin:0 20px;
-    border-radius: 5px;
+.back-btn {
+	font-size: 20px;
+	background-color: #fff;
+	color: gray;
+	font-weight: bold;
+	border: 1px solid;
+	padding: 10px 20px;
+	margin: 0 20px;
+	border-radius: 5px;
 }
 
-.delete-btn{
-    font-size: 20px;
-    background-color:#fff;
-    color:crimson;
-    font-weight: bold;
-    border: 1px solid;
-    padding: 10px 20px;
-    margin:20px 20px;
-    border-radius: 5px;
+.delete-btn {
+	font-size: 20px;
+	background-color: #fff;
+	color: crimson;
+	font-weight: bold;
+	border: 1px solid;
+	padding: 10px 20px;
+	margin: 20px 20px;
+	border-radius: 5px;
 }

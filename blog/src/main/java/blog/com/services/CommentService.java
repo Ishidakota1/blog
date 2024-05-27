@@ -15,28 +15,39 @@ public class CommentService {
 	@Autowired
 	private CommentDao commentDao;
 
+	// コメント作成処理
 	public boolean createComment(String commentDetail, Long articleId, String accountId) {
+		
+		// articleId == null ならfalseを返却
 		if (articleId == null) {
 			return false;
 		} else {
+			// 現在日時を登録日として格納
 			Timestamp registerDate = new Timestamp(System.currentTimeMillis());
 			commentDao.save(new Comment(commentDetail, registerDate, articleId, accountId));
+			
 			return true;
 		}
 	}
 
+	// コメント表示処理
 	public List<Comment> selectComenntListByArticleId(Long articleId) {
-		// adminIdが存在するならfindAllメソッドで取得した内容を返却
+		
+		// articleIdに付随するコメント群をリストで返却
 		return commentDao.findByArticleId(articleId);
 	}
 	
+	// コメント削除処理
 	public boolean deleteComment(Long articleId) {
+		
+		// articleId == null ならfalseを返却
 		if (articleId == null) {
 			return false;
 		} else {
-			// productIdが存在するならdeleteByProductIdを呼び出して商品を削除
-			// コントローラーにtrueを返却
+			// articleIdでDB検索、一件の記事に付随するコメントを削除
 			commentDao.deleteByArticleId(articleId);
+			
+			// コントローラーにtrueを返却
 			return true;
 		}
 	}

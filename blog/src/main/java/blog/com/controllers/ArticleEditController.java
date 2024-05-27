@@ -83,7 +83,7 @@ public class ArticleEditController {
 				try {
 					// ファイルを現在時刻+ファイル名で保存
 					Files.copy(articleImage.getInputStream(),
-							Path.of("src/main/resources/static/product-img/" + fileName));
+							Path.of("src/main/resources/static/article-img/" + fileName));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

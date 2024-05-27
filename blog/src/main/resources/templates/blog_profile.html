@@ -6,10 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="blog-profile.css">
-	<!-- <link rel="stylesheet" th:href="@{/css/reset.css}">
-	<link rel="stylesheet" th:href="@{/css/login.css}"> -->
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog-profile.css}">
 </head>
 
 <body>
@@ -17,35 +15,43 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<ul class="pc-list">
-					<li class="login-name" th:text="${adminName}">ゲスト</li>
+					<li class="login-name" th:text="${userName} + ' 様'"></li>
 				</ul>
 				<ul class="pc-list">
-					<li class="header-menu-item"><a th:href="@{/product/list}">一覧</a></li>
-					<li class="header-menu-item"><a th:href="@{/product/list}">新規投稿</a></li>
-					<li class="header-menu-item"><a th:href="@{/product/list}">プロフィール</a></li>
-					<li class="header-menu-item"><a th:href="@{/admin/logout}">ログアウト</a></li>
+					<li class="header-menu-item"><a th:href="@{/article/list}">一覧</a></li>
+					<li class="header-menu-item"><a th:href="@{/article/register}">新規投稿</a></li>
+					<li class="header-menu-item"><a th:href="@{/profile}">プロフィール</a></li>
+					<li class="header-menu-item"><a th:href="@{/logout}">ログアウト</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<main>
 		<div class="main-inner">
-			<section>
+			<section　th:object=${account}>
 				<h2>プロフィール</h2>
 				<div class="contents">
 					<div class="docs-header">
 						ユーザーID
 					</div>
 					<div class="docs-body">
-						<p>aaaaaaaaaaaa</p>
+						<p th:text="*{accountId}"></p>
 					</div>
 				</div>
 				<div class="contents">
 					<div class="docs-header">
-					ユーザー名
+						メールアドレス
 					</div>
 					<div class="docs-body">
-						<p>aaaaaaaaaaaa</p>
+						<p th:text="*{accountMailadress}"></p>
+					</div>
+				</div>
+				<div class="contents">
+					<div class="docs-header">
+						ユーザー名
+					</div>
+					<div class="docs-body">
+						<p　th:text="*{userName}"></p>
 					</div>
 				</div>
 				<div class="contents">
@@ -53,7 +59,7 @@
 						自己紹介文
 					</div>
 					<div class="docs-body">
-						<p>aaaaaaaaaaaa</p>
+						<p　th:text="*{userDetail}"></p>
 					</div>
 				</div>
 			</section>

@@ -16,14 +16,11 @@ public interface ArticleDao extends JpaRepository<Article, Long> {
 	
 	// 記事の一覧表示
 	List<Article> findAll();
-
-	// 
-	Article findByArticleName(String articleName);
 	
 	// 記事個別表示の際に該当レコードを検索
 	Article findByArticleId(Long articleId);
 
-	// IDを指定してレコード削除
+	// 記事IDを指定して記事削除
 	@Transactional
 	void deleteByArticleId(Long articleId);
 }

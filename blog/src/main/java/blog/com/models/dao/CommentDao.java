@@ -18,7 +18,7 @@ public interface CommentDao extends JpaRepository<Comment, Long> {
 	// 一つの記事に付随するコメントを検索
 	List<Comment> findByArticleId(Long articleId);
 	
-	// 記事削除
+	// 	// 記事IDを指定してコメント削除
 	@Transactional
 	void deleteByArticleId(Long articleId);
 }

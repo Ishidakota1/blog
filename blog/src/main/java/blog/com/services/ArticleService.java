@@ -15,54 +15,55 @@ public class ArticleService {
 	@Autowired
 	private ArticleDao articleDao;
 
-	// 商品一覧のチェックs
+	// 記事一覧取得
 	public List<Article> selectAllArticleList() {
-		// adminIdが存在するならfindAllメソッドで取得した内容を返却
 		return articleDao.findAll();
 	}
 
-	// 商品の登録チャック
-	// findByProductName == null なら保存処理を行いtureを返却
-	// 商品が存在していればfalseを返却
-	public boolean createArticle(String articleName, String articleDetail, String imageName, String accountId,
+	// 記事登録処理
+	public void createArticle(String articleName, String articleDetail, String imageName, String accountId,
 			String articleDate) {
-		if (articleDao.findByArticleName(articleName) == null) {
-			Timestamp registerDate = new Timestamp(System.currentTimeMillis());
-			articleDao
-					.save(new Article(articleName, articleDetail, imageName, registerDate, 0, accountId, articleDate));
-			return true;
-		} else {
-			return false;
-		}
+		// 現在日時を登録日として格納
+		Timestamp registerDate = new Timestamp(System.currentTimeMillis());
+		articleDao.save(new Article(articleName, articleDetail, imageName, registerDate, 0, accountId, articleDate));
 	}
 
-	// 商品編集画面表示
-	// productId == null ならnullを返却
+	// 記事編集画面表示
 	public Article selectOneArticle(Long articleId) {
+
+		// articleId == null ならnullを返却
 		if (articleId == null) {
 			return null;
 		} else {
-			// null出ない場合はfindByProductIdを呼び出して商品情報を返却
+			// 一件の記事情報を格納
 			Article article = articleDao.findByArticleId(articleId);
+
+			// 表示の際に読者カウントを+1、DBを更新
 			int countUpOne = article.getDisplayCount();
 			countUpOne++;
 			article.setDisplayCount(countUpOne);
 			articleDao.save(article);
+
+			// 読者カウントが更新された情報を返却
 			return article;
 		}
 	}
 
-	// 商品更新処理
-	// productId == null ならfalseを返却
+	// 記事更新処理
 	public boolean articleUpdate(Long articleId, String articleName, String articleDetail, String imageName,
 			String accountId, String articleDate) {
+
+		// articleId == null ならfalseを返却
 		if (articleId == null) {
 			return false;
 		} else {
-			// productIdが存在するならfindByProductIdを呼び出して更新前データを変数に格納
+			// 更新前の一件の記事情報格納
 			Article article = articleDao.findByArticleId(articleId);
+
+			// 現在日時を更新日として格納
 			Timestamp updateDate = new Timestamp(System.currentTimeMillis());
-			// 更新前データを格納している変数に対してセッターで値を更新後、DBのレコードを更新
+
+			// 更新前の記事を格納している変数に対してセッターで値を更新後、DBのレコードを更新
 			article.setArticleName(articleName);
 			article.setArticleDetail(articleDetail);
 			article.setImageName(imageName);
@@ -76,15 +77,17 @@ public class ArticleService {
 		}
 	}
 
-	// 商品の削除チェック
-	// productId == null ならfalseを返却
+	// 記事削除処理
 	public boolean deleteArticle(Long articleId) {
+
+		// articleId == null ならfalseを返却
 		if (articleId == null) {
 			return false;
 		} else {
-			// productIdが存在するならdeleteByProductIdを呼び出して商品を削除
+			// articleIdでDB検索、該当記事を削除
 			// コントローラーにtrueを返却
 			articleDao.deleteByArticleId(articleId);
+
 			return true;
 		}
 	}

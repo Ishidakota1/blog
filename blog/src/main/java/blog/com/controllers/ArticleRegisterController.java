@@ -48,8 +48,7 @@ public class ArticleRegisterController {
 	// 記事登録処理
 	@PostMapping("/article/register/process")
 	public String productRegisterProcess(@RequestParam String articleName, @RequestParam String articleDetail,
-			@RequestParam MultipartFile articleImage, @RequestParam String articleDate,
-			Model model) {
+			@RequestParam MultipartFile articleImage, @RequestParam String articleDate, Model model) {
 
 		// セッションからログイン情報を取得
 		Account account = (Account) session.getAttribute("loginUserInfo");
@@ -69,21 +68,15 @@ public class ArticleRegisterController {
 				try {
 					// ファイルを現在時刻+ファイル名で保存
 					Files.copy(articleImage.getInputStream(),
-							Path.of("src/main/resources/static/product-img/" + fileName));
+							Path.of("src/main/resources/static/article-img/" + fileName));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 			// 記事登録処理
-			// 登録完了なら商品一覧画面にリダイレクト
-			// 登録失敗なら商品登録画面にとどまる
-			if (articleService.createArticle(articleName, articleDetail, fileName, account.getAccountId(),
-					articleDate)) {
-				return "redirect:/article/list";
-			} else {
-				model.addAttribute("userName", account.getUserName());
-				return "blog_register.html";
-			}
+			articleService.createArticle(articleName, articleDetail, fileName, account.getAccountId(), articleDate);
+			return "redirect:/article/list";
+
 		}
 	}
 }
